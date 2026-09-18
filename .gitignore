@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+backend/__pycache__/
+backend/uploads/
+backend/data/chats.json

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>PDF AI Chatbot</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- Logo -->
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🤖
+            </div>
+
+            <div>
+
+                <h1>
+                    PDF AI
+                </h1>
+
+                <span>
+                    Document Assistant
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- New Chat -->
+
+        <button
+            class="new-chat-btn"
+            onclick="newChat()">
+
+            <span>
+                ＋
+            </span>
+
+            New Chat
+
+        </button>
+
+
+        <!-- =========================
+             CHAT HISTORY
+        ========================== -->
+
+        <div class="sidebar-section">
+
+            <div class="section-title">
+                CHATS
+            </div>
+
+            <div
+                id="chatList"
+                class="chat-list">
+
+                <div class="empty-chats">
+                    Loading chats...
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             UPLOADED DOCUMENTS
+        ========================== -->
+
+        <div class="sidebar-section">
+
+            <div class="section-title">
+
+                UPLOADED DOCUMENTS
+
+            </div>
+
+
+            <div
+                id="documentList"
+                class="document-list">
+
+                <div class="empty-documents">
+
+                    No PDFs uploaded
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             QUICK TIPS
+        ========================== -->
+
+        <div class="sidebar-section tips">
+
+            <div class="section-title">
+
+                QUICK TIPS
+
+            </div>
+
+
+            <div class="tip">
+
+                ✨ Ask questions from your PDFs
+
+            </div>
+
+
+            <div class="tip">
+
+                🔎 Search across multiple documents
+
+            </div>
+
+
+            <div class="tip">
+
+                💬 Your chats are saved automatically
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             BOTTOM
+        ========================== -->
+
+        <div class="sidebar-bottom">
+
+            <div class="secure">
+
+                <span>
+                    🔒
+                </span>
+
+                <div>
+
+                    <strong>
+                        Chat history saved
+                    </strong>
+
+                    <small>
+                        Stored in backend data
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main">
+
+
+        <!-- =========================
+             TOP BAR
+        ========================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="mobile-brand">
+
+                    🤖 PDF AI Chatbot
+
+                </div>
+
+
+                <span class="status-dot">
+                </span>
+
+
+                <span class="status-text">
+
+                    AI assistant ready
+
+                </span>
+
+            </div>
+
+
+            <!-- Clear Current Chat -->
+
+            <button
+                class="clear-btn"
+                onclick="clearCurrentChat()">
+
+                🗑 Clear chat
+
+            </button>
+
+        </header>
+
+
+
+        <!-- =========================
+             CONTENT
+        ========================== -->
+
+        <section class="content">
+
+
+            <!-- =========================
+                 HERO
+            ========================== -->
+
+            <div class="hero">
+
+                <div>
+
+                    <p class="eyebrow">
+
+                        YOUR DOCUMENT, YOUR ASSISTANT
+
+                    </p>
+
+
+                    <h2>
+
+                        Chat with your
+                        <span>
+                            PDFs
+                        </span>
+                        👋
+
+                    </h2>
+
+
+                    <p class="hero-text">
+
+                        Upload multiple PDFs and ask questions.
+                        I'll search across all your documents
+                        and give you a concise answer.
+
+                    </p>
+
+                </div>
+
+
+                <div class="hero-illustration">
+
+                    <div class="bubble">
+                        💬
+                    </div>
+
+                    <div class="robot">
+                        🤖
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 UPLOAD PDF
+            ========================== -->
+
+            <section class="upload-card">
+
+
+                <div class="card-heading">
+
+                    <div class="heading-icon">
+
+                        📤
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Upload your PDFs
+
+                        </h3>
+
+
+                        <p>
+
+                            Upload multiple PDF documents
+                            and search across all of them.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Drop Zone -->
+
+                <label
+                    class="drop-zone"
+                    id="dropZone">
+
+
+                    <input
+                        type="file"
+                        id="pdfFile"
+                        accept=".pdf,application/pdf"
+                        multiple
+                        hidden>
+
+
+                    <div class="upload-symbol">
+
+                        ↑
+
+                    </div>
+
+
+                    <h4>
+
+                        Drop your PDFs here
+
+                    </h4>
+
+
+                    <p>
+
+                        or click to browse
+                        from your computer
+
+                    </p>
+
+
+                    <span class="choose-btn">
+
+                        Choose PDFs
+
+                    </span>
+
+
+                    <div
+                        class="selected-file"
+                        id="selectedFile">
+
+                        No files selected
+
+                    </div>
+
+
+                </label>
+
+
+
+                <!-- Upload Footer -->
+
+                <div class="upload-footer">
+
+
+                    <div
+                        id="uploadStatus"
+                        class="upload-status">
+                    </div>
+
+
+                    <button
+                        class="primary-btn"
+                        id="uploadBtn"
+                        onclick="uploadPDF()">
+
+                        <span>
+
+                            Upload & Process
+
+                        </span>
+
+
+                        <span>
+
+                            →
+
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================
+                 DOCUMENT CHAT
+            ========================== -->
+
+            <section class="chat-card">
+
+
+                <!-- Chat Header -->
+
+                <div class="chat-header">
+
+                    <div>
+
+                        <h3
+                            id="chatTitle">
+
+                            New Chat
+
+                        </h3>
+
+
+                        <p>
+
+                            Ask anything about
+                            your uploaded documents
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="ai-badge">
+
+                        ● AI Online
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     MESSAGES
+                ========================== -->
+
+                <div
+                    class="messages"
+                    id="messages">
+
+                </div>
+
+
+
+                <!-- =========================
+                     SUGGESTIONS
+                ========================== -->
+
+                <div class="suggestions">
+
+
+                    <button
+                        onclick="useSuggestion(
+                            'What are these documents about?'
+                        )">
+
+                        What are these documents about?
+
+                    </button>
+
+
+                    <button
+                        onclick="useSuggestion(
+                            'Summarize the main points'
+                        )">
+
+                        Summarize the main points
+
+                    </button>
+
+
+                    <button
+                        onclick="useSuggestion(
+                            'What are the key conclusions?'
+                        )">
+
+                        Key conclusions
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     MESSAGE INPUT
+                ========================== -->
+
+                <div class="composer">
+
+
+                    <textarea
+                        id="question"
+                        rows="1"
+                        placeholder="Ask a question about your PDFs..."
+                        onkeydown="handleEnter(event)">
+                    </textarea>
+
+
+                    <button
+                        class="send-btn"
+                        id="sendBtn"
+                        onclick="askQuestion()"
+                        aria-label="Send">
+
+                        ➤
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- Footer -->
+
+                <div class="composer-note">
+
+
+                    <span>
+
+                        ↵ Enter to send
+
+                    </span>
+
+
+                    <span>
+
+                        Answers are based on uploaded PDFs
+
+                    </span>
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================
+     TOAST MESSAGE
+========================== -->
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+
+
+<!-- JavaScript -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
