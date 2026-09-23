@@ -1,7 +1,17 @@
 [
   {
-    "filename": "large_rag_test_corpus.pdf",
-    "pages": 51,
-    "chunks": 132
+    "filename": "attendance_policy.pdf",
+    "pages": 1,
+    "chunks": 3
+  },
+  {
+    "filename": "employee_benefits.pdf",
+    "pages": 1,
+    "chunks": 3
+  },
+  {
+    "filename": "employee_conduct.pdf",
+    "pages": 1,
+    "chunks": 3
   }
 ]
